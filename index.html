@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alfredo Razafiarimanana – Support applicatif N2 | SQL | ELK | API</title>
+<meta name="description" content="Portfolio d’Alfredo Razafiarimanana, technicien support informatique applicatif N2 à Antananarivo : SQL, ELK, API, gestion d’incidents.">
+<meta property="og:title" content="Alfredo Razafiarimanana – Support applicatif N2">
+<meta property="og:description" content="SQL, ELK, API, gestion d’incidents. Démonstrations interactives et études de cas.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f6fb;--sf:#fff;--ink:#10203a;--mu:#52617b;--ac:#0b6fd6;--ac2:#0b8fa3;--acink:#fff;--ln:#d5ddec;--ok:#0f7a4d;--wn:#a35a06;--er:#c0392b;--term:#0a1428;
+--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070f1f;--sf:#0d1a31;--ink:#e4ecfa;--mu:#8fa2c4;--ac:#4d9bff;--ac2:#38d6e8;--acink:#041022;--ln:#1b2b49;--ok:#3ddc97;--wn:#f5b455;--er:#ff7b7b;--term:#050b18}}
+:root[data-theme="dark"]{--bg:#070f1f;--sf:#0d1a31;--ink:#e4ecfa;--mu:#8fa2c4;--ac:#4d9bff;--ac2:#38d6e8;--acink:#041022;--ln:#1b2b49;--ok:#3ddc97;--wn:#f5b455;--er:#ff7b7b;--term:#050b18}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans)}
+a{color:var(--ac)}
+:focus-visible{outline:3px solid var(--ac2);outline-offset:2px;border-radius:4px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--ln)}
+#prog{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:linear-gradient(90deg,var(--ac),var(--ac2))}
+.bar .wrap{display:flex;align-items:center;gap:10px;height:56px}
+.logo{font:600 15px var(--mono);color:var(--ink);text-decoration:none;margin-right:auto}.logo b{color:var(--ac2)}
+nav{display:flex;gap:2px}
+nav a{font-size:14px;text-decoration:none;color:var(--mu);padding:7px 9px;border-radius:6px;white-space:nowrap}
+nav a:hover,nav a.on{color:var(--ink);background:var(--sf)}nav a.on{box-shadow:inset 0 -2px var(--ac2)}
+.ib{font:inherit;font-size:14px;background:var(--sf);color:var(--ink);border:1px solid var(--ln);border-radius:8px;padding:8px 12px;min-height:40px;cursor:pointer}
+#menu{display:none}
+@media(max-width:860px){#menu{display:block}nav{display:none;position:absolute;top:56px;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--ln);padding:8px 20px}nav.open{display:flex}nav a{padding:12px 8px;font-size:16px}}
+.hero{display:grid;gap:28px;padding:40px 0 28px}
+@media(min-width:820px){.hero{grid-template-columns:1fr 1.15fr;align-items:center;padding:64px 0 40px}}
+.who{display:flex;gap:16px;align-items:center;margin-bottom:16px}
+.who img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--ac2)}
+h1{font:600 clamp(25px,5vw,36px)/1.15 var(--sans);margin:0}
+.role{color:var(--ac2);font:600 13px var(--mono);margin:6px 0 0}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:9px 16px;border-radius:8px;font:600 15px var(--sans);text-decoration:none;border:1px solid var(--ac);cursor:pointer;background:transparent;color:var(--ac)}
+.btn.m{background:var(--ac);color:var(--acink)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0;padding:0;list-style:none}
+.tags li{font:400 12.5px var(--mono);color:var(--ac2);border:1px solid var(--ln);border-radius:5px;padding:3px 8px}
+.term{background:var(--term);color:#d7e3fb;border-radius:12px;border:1px solid var(--ln);overflow:hidden;font:400 12.5px/1.7 var(--mono)}
+.term .tb{display:flex;align-items:center;gap:6px;padding:8px 12px;background:rgba(255,255,255,.06);color:#8fa3c8;font-size:12px}
+.term .tb i{width:10px;height:10px;border-radius:50%;background:#ff5f57}.term .tb i:nth-child(2){background:#febc2e}.term .tb i:nth-child(3){background:#28c840}
+.term .tb span{margin-right:auto;margin-left:6px}
+.term .tb button{font:inherit;color:#d7e3fb;background:rgba(255,255,255,.1);border:0;border-radius:5px;padding:5px 9px;cursor:pointer;min-height:30px}
+#tty{padding:12px 14px;height:262px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;scroll-behavior:smooth}
+.t{color:#5f7399}.INFO{color:#6fb1ff}.WARNING{color:#f5b455}.ERROR{color:#ff7b7b}.SUCCESS{color:#4ade9b;font-weight:600}
+.bar2{height:4px;background:rgba(255,255,255,.1)}#pb{height:100%;width:0;background:#38d6e8;transition:width .3s}
+.cur{display:inline-block;width:7px;height:14px;background:#38d6e8;vertical-align:-2px;animation:bl 1s steps(2) infinite}@keyframes bl{50%{opacity:0}}
+.note{font-size:12.5px;color:var(--mu);margin:8px 0 0}
+section{padding:42px 0;border-top:1px solid var(--ln)}
+h2{font:600 26px/1.2 var(--sans);margin:0 0 6px}
+.sub{color:var(--mu);margin:0 0 20px;max-width:62ch}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:16px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--ac2);transform:translateY(-2px)}
+.card h3{font:600 17px var(--sans);margin:0 0 6px}.card p{margin:0 0 8px;color:var(--mu);font-size:15px}
+.ic{font-size:22px}.tg{font:400 12px var(--mono);color:var(--ac2)}
+svg.sp{width:100%;height:34px;display:block;margin-top:8px}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;align-items:center}
+.chip{font:500 14px var(--sans);padding:8px 14px;min-height:40px;border-radius:999px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ac);color:var(--acink);border-color:var(--ac)}
+input[type=search],select{font:inherit;min-height:42px;padding:8px 12px;border-radius:8px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);flex:1 1 200px;max-width:100%}
+.sk{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 14px}
+.sk button{font:400 13.5px var(--mono);padding:8px 12px;border-radius:6px;background:var(--sf);color:var(--ink);border:1px solid var(--ln);border-left:3px solid var(--ac2);cursor:pointer;min-height:38px}
+.sk button[aria-expanded="true"]{border-color:var(--ac2);background:var(--bg)}
+#sd{min-height:52px}
+.two{display:grid;gap:14px;grid-template-columns:1fr}@media(min-width:760px){.two{grid-template-columns:1fr 1fr}}
+.lg{background:var(--term);color:#d7e3fb;border-radius:10px;border:1px solid var(--ln);font:400 12.5px/1.7 var(--mono);padding:10px 12px;height:240px;overflow:auto}
+.lg div{white-space:pre-wrap;word-break:break-word}.lg mark{background:#38d6e8;color:#041022;border-radius:3px}
+pre.cd{background:var(--term);color:#d7e3fb;border-radius:8px;padding:12px;overflow-x:auto;font:400 12.5px/1.6 var(--mono);margin:8px 0}
+.kw{color:#6fb1ff}.cm{color:#7f93b8}
+ol.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ol.steps li{display:flex;gap:12px;align-items:flex-start;background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:12px 14px;transition:border-color .25s,background .25s}
+ol.steps li.on{border-color:var(--ac2);background:var(--bg)}
+ol.steps .n{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:600 13px var(--mono);border:2px solid var(--ln);color:var(--mu)}
+ol.steps li.on .n{border-color:var(--ac2);color:var(--ac2)}ol.steps b{display:block}ol.steps span{color:var(--mu);font-size:14.5px}
+details{background:var(--sf);border:1px solid var(--ln);border-radius:10px;margin-bottom:10px}
+summary{cursor:pointer;padding:14px 16px;list-style:none;display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:space-between;align-items:baseline}
+summary::-webkit-details-marker{display:none}summary::before{content:"+";font:600 16px var(--mono);color:var(--ac2)}details[open] summary::before{content:"–"}
+summary .tt{font-weight:600;flex:1 1 60%}summary small{display:block;font-weight:400;color:var(--mu)}summary time{font:400 13px var(--mono);color:var(--ac2)}
+details ul{margin:0;padding:0 18px 14px 36px}details li{margin-bottom:4px}
+dialog{background:var(--sf);color:var(--ink);border:1px solid var(--ac2);border-radius:12px;max-width:min(680px,94vw);max-height:88vh;padding:20px;overflow:auto}
+dialog::backdrop{background:rgba(3,8,18,.7)}
+dialog h3{margin:0 0 4px;font:600 20px var(--sans)}dialog dt{font-weight:600;margin-top:10px;color:var(--ac2);font-size:14px}dialog dd{margin:2px 0 0}
+.mail{font:600 clamp(15px,3.6vw,20px) var(--mono);word-break:break-all}
+#top2{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15;display:none}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ac);color:var(--acink);padding:10px 16px;border-radius:8px;font-weight:600;z-index:40;display:none}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}.rv.in{opacity:1;transform:none}
+footer{padding:26px 0 40px;color:var(--mu);font-size:14px;border-top:1px solid var(--ln)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.rv{opacity:1;transform:none}}
+@media print{.bar,#top2,.term,.ib,.chip,#menu{display:none!important}body{background:#fff;color:#000}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+<a class="logo" href="#accueil">~/<b>alfredo</b></a>
+<nav id="nav" aria-label="Navigation principale"><a href="#accueil">Accueil</a><a href="#apropos">À propos</a><a href="#competences">Compétences</a><a href="#demos">Démos</a><a href="#cas">Études de cas</a><a href="#methode">Méthode</a><a href="#parcours">Parcours</a><a href="#cv">CV</a><a href="#contact">Contact</a></nav>
+<button class="ib" id="theme" type="button" aria-label="Changer de thème">Thème</button>
+<button class="ib" id="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+</div><div id="prog"></div></header>
+
+<main class="wrap">
+<section id="accueil" style="border-top:0"><div class="hero">
+<div>
+<div class="who"><img src="data:image/jpeg;base64,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" alt="Portrait d’Alfredo Razafiarimanana"><div><h1>Alfredo Razafiarimanana</h1><p class="role">Technicien support informatique applicatif N2 | SQL | ELK | API</p></div></div>
+<p>Technicien support applicatif N2, j’analyse les incidents, mène des investigations SQL, explore les logs avec ELK et diagnostique les flux applicatifs. Je recherche les causes, suis les incidents et coordonne les équipes techniques pour contribuer à la continuité des services.</p>
+<ul class="tags"><li>Support N1/N2</li><li>SQL</li><li>ELK</li><li>API</li><li>Incidents</li></ul>
+<div class="cta"><a class="btn m" href="#apropos">Découvrir mon profil</a><a class="btn" href="#cv">Télécharger mon CV</a><a class="btn" href="#contact">Me contacter</a></div>
+</div>
+<div><div class="term" role="group" aria-label="Terminal de démonstration">
+<div class="tb"><i></i><i></i><i></i><span>diagnostic-demo</span><button id="tp" type="button">Pause</button><button id="tr" type="button">Relancer</button></div>
+<div id="tty" role="log" aria-live="off"></div><div class="bar2"><div id="pb"></div></div></div>
+<p class="note">Simulation locale : incidents et données fictifs. Aucune commande n’est exécutée.</p></div>
+</div></section>
+
+<section id="apropos" class="rv"><h2>À propos</h2>
+<p class="sub">Antananarivo, Madagascar. Je cherche des opportunités en support applicatif N1/N2, support technique, exploitation applicative et assistance informatique, en entreprise ou en ESN.</p>
+<div class="two"><div class="card"><h3>Ce que j’apporte à une équipe IT</h3><p>Une analyse structurée des incidents et une escalade avec des éléments précis.</p><p>Des vérifications SQL, logs et API avant de transmettre.</p><p>De la documentation et des procédures claires.</p><p>Une communication adaptée aux utilisateurs comme aux techniciens.</p></div>
+<div class="card"><h3>Expérience complémentaire et langues</h3><p>Assistance technique télécom : connexion Internet, fibre, ADSL, équipements. Relation client et réservation aérienne.</p><p><b>Malagasy</b> : langue maternelle. <b>Français</b> : courant. <b>Anglais</b> : intermédiaire.</p></div></div></section>
+
+<section id="competences" class="rv"><h2>Compétences</h2>
+<p class="sub">Cherchez ou filtrez, puis touchez une compétence pour le détail. Aucun niveau chiffré : seulement ce que je pratique.</p>
+<div class="row"><input type="search" id="q" placeholder="Rechercher (ex. SQL, logs, API)" aria-label="Rechercher une compétence"></div>
+<div class="row" id="fc" role="group" aria-label="Catégories"></div>
+<ul class="sk" id="sk"></ul><div class="card" id="sd" aria-live="polite">Sélectionnez une compétence.</div></section>
+
+<section id="demos" class="rv"><h2>Démos interactives</h2>
+<p class="sub">Tout fonctionne dans votre navigateur, avec des données fictives. Rien n’est envoyé nulle part.</p>
+<div class="grid" id="dash"></div>
+<div class="two" style="margin-top:22px"><div><h3>Explorer des logs</h3>
+<div class="row"><input type="search" id="lq" placeholder="Mot-clé (ex. timeout)" aria-label="Rechercher dans les logs"></div>
+<div class="row" id="lf" role="group" aria-label="Niveau"></div><div class="lg" id="lg" role="log"></div></div>
+<div><h3>Diagnostiquer un appel API</h3>
+<div class="row"><select id="as" aria-label="Scénario API"></select></div><div class="lg" id="ao" style="height:auto;min-height:240px"></div></div></div></section>
+
+<section id="cas" class="rv"><h2>Études de cas</h2>
+<p class="sub">Démonstrations pédagogiques sur des exemples fictifs et anonymisés. Aucun projet ni donnée de mon employeur.</p>
+<div class="grid" id="cg"></div></section>
+
+<section id="methode" class="rv"><h2>Comment je résous un incident</h2>
+<div class="row"><button class="btn" id="mp" type="button">Lancer le parcours</button></div><ol class="steps" id="st"></ol></section>
+
+<section id="parcours" class="rv"><h2>Parcours</h2><p class="sub">Touchez un poste pour le détail.</p>
+<details open><summary><span class="tt">Support informatique / Support applicatif N1-N2<small>SYNOVO GROUP</small></span><time>12/2024 – aujourd’hui</time></summary><ul><li>Incidents N1/N2 via l’outil de ticketing : analyse, priorisation, suivi, résolution.</li><li>Anomalies applicatives : erreurs API, synchronisation, incohérences de données.</li><li>Requêtes SQL d’analyse et de vérification, corrections selon les procédures autorisées.</li><li>Logs ELK pour la recherche des causes racines.</li><li>Suivi des flux : API, trackers GPS, synchronisations entre systèmes.</li><li>Escalade documentée, tests correctifs, procédures techniques.</li></ul></details>
+<details><summary><span class="tt">Hotliner support informatique<small>ENOZIS</small></span><time>06/2024 – 12/2024</time></summary><ul><li>Appels entrants, incidents logiciels métiers, réseau, matériel.</li><li>Assistance à distance Windows / Android, suivi des tickets avec reporting.</li></ul></details>
+<details><summary><span class="tt">Support technique et utilisateur (télécom)<small>TELEPERFORMANCE MADAGASCAR</small></span><time>2022 – 2024</time></summary><ul><li>Incidents réseau et équipements (box, décodeur, ligne fixe), dépannage à distance.</li><li>Escalade des incidents complexes, volume élevé dans le respect des SLA.</li></ul></details>
+<details><summary><span class="tt">Relation client, campagne Air France<small>ADM VALUE</small></span><time>2021 – 2022</time></summary><ul><li>Réservation et paiement de billets, demandes clients en cours de vol.</li></ul></details>
+<p class="note">Formation : développement web et fondamentaux IT (2021) ; technicien supérieur en gestion, Millenium University (2018–2020) ; baccalauréat (2017). Établissement de la formation 2021 : à confirmer.</p></section>
+
+<section id="cv" class="rv"><h2>CV</h2><p class="sub">Fichier attendu : <code>CV_Alfredo_Razafiarimanana.pdf</code>, placé à côté de <code>index.html</code>. Pour le mettre à jour, remplacez simplement ce fichier.</p>
+<div id="cvb"></div></section>
+
+<section id="contact" class="rv"><h2>Contact</h2><p class="sub">E-mail, téléphone, WhatsApp et LinkedIn. Pas de formulaire : un site statique ne peut pas enregistrer de messages sans service externe.</p>
+<p><a class="mail" id="ml" href="mailto:alfredorazafiarimanana@gmail.com">alfredorazafiarimanana@gmail.com</a></p>
+<p class="mail" style="font-weight:400">Téléphone : <a href="tel:+261383883571">038 38 835 71</a><br>WhatsApp : <a href="https://wa.me/261328560481" target="_blank" rel="noopener noreferrer">+261 32 85 604 81</a></p>
+<div class="cta"><button class="btn m" id="cp" type="button">Copier l’adresse</button><a class="btn" href="mailto:alfredorazafiarimanana@gmail.com?subject=Opportunit%C3%A9%20professionnelle">Écrire un e-mail</a><a class="btn" href="https://www.linkedin.com/in/alfredo-razafiarimanana-07322038a" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="btn" href="https://wa.me/261328560481" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="btn" href="tel:+261383883571">Appeler</a></div></section>
+</main>
+<footer><div class="wrap">Alfredo Razafiarimanana, Antananarivo. Aucune donnée collectée, aucun suivi.</div></footer>
+<button class="ib" id="top2" type="button" aria-label="Revenir en haut">↑</button><div id="toast" role="status"></div>
+<dialog id="dg" aria-labelledby="dt"><div id="dc"></div><div class="cta"><button class="btn" id="dx" type="button">Fermer</button></div></dialog>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function toast(m){var t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(toast.k);toast.k=setTimeout(function(){t.style.display='none'},1800)}
+function copy(s){try{navigator.clipboard.writeText(s).then(function(){toast('Copié')},function(){toast('Copie impossible')})}catch(e){toast('Copie impossible')}}
+var R=document.documentElement;try{var sv=localStorage.getItem('theme');if(sv)R.setAttribute('data-theme',sv)}catch(e){}
+$('theme').onclick=function(){var d=R.getAttribute('data-theme')?R.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=d?'light':'dark';R.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}};
+$('menu').onclick=function(){var o=$('nav').classList.toggle('open');this.setAttribute('aria-expanded',o)};
+$('nav').onclick=function(e){if(e.target.tagName==='A'){$('nav').classList.remove('open');$('menu').setAttribute('aria-expanded','false')}};
+$('top2').onclick=function(){scrollTo({top:0,behavior:RM?'auto':'smooth'})};
+addEventListener('scroll',function(){var h=document.body.scrollHeight-innerHeight;$('prog').style.width=(h>0?scrollY/h*100:0)+'%';$('top2').style.display=scrollY>600?'block':'none'},{passive:true});
+var links=document.querySelectorAll('#nav a'),secs=document.querySelectorAll('main section');
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-30% 0px -60% 0px'});
+secs.forEach(function(s){io.observe(s)});
+var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.05});
+document.querySelectorAll('.rv').forEach(function(s){io2.observe(s)})}else{document.querySelectorAll('.rv').forEach(function(s){s.classList.add('in')})}
+
+/* Terminal */
+var TL=[['INFO','Initialisation du diagnostic applicatif…'],['INFO','Vérification du statut du service…'],['WARNING','Service lent : temps de réponse élevé'],['INFO','Analyse des journaux applicatifs…'],['ERROR','HTTP 504 sur GET /api/v1/positions'],['INFO','Investigation SQL : dernières positions reçues…'],['INFO','Vérification du flux API entre les deux systèmes…'],['WARNING','Anomalie fictive : file de synchronisation bloquée'],['INFO','Diagnostic terminé.'],['SUCCESS','Incident de démonstration résolu.']];
+var tty=$('tty'),ti=0,tp=false,tk=null,tn=0,cur=el('span','cur');
+function stamp(){var s=32520+tn*7+Math.floor(Math.random()*3);tn++;var h=Math.floor(s/3600),m=Math.floor(s%3600/60),c=s%60;return [h,m,c].map(function(v){return String(v).padStart(2,'0')}).join(':')}
+function line(l){var d=el('div');d.appendChild(el('span','t',stamp()+' '));d.appendChild(el('span',l[0],'['+l[0]+'] '+l[1]));tty.appendChild(d);tty.scrollTop=tty.scrollHeight;$('pb').style.width=((ti)/TL.length*100)+'%'}
+function step(){if(tp)return;if(ti>=TL.length){tty.appendChild(cur);return}line(TL[ti++]);tk=setTimeout(step,RM?0:650)}
+function runT(){clearTimeout(tk);tty.textContent='';ti=0;tn=0;tp=false;$('tp').textContent='Pause';step()}
+$('tp').onclick=function(){tp=!tp;this.textContent=tp?'Reprendre':'Pause';if(!tp)step()};$('tr').onclick=runT;
+if(RM){TL.forEach(function(l,i){ti=i+1;line(l)})}else runT();
+
+/* Compétences */
+var CAT={all:'Tout',sup:'Support',don:'Données et diagnostic',obs:'Observabilité et intégration',rel:'Relation client et méthodes',out:'Outils'};
+var SK=[['Support applicatif N1/N2','sup','Prise en charge des incidents applicatifs de premier et second niveau.'],['Diagnostic et résolution d’incidents','sup','Analyse des symptômes, vérifications, correction ou escalade.'],['Gestion des tickets','sup','Priorisation, suivi et clôture dans l’outil de ticketing.'],['Suivi des incidents','sup','Suivi jusqu’à la résolution, avec reporting.'],['Escalade technique','sup','Transmission aux équipes compétentes avec éléments d’analyse précis.'],['Assistance aux utilisateurs','sup','Accompagnement et explication des solutions.'],['Documentation technique','sup','Rédaction et amélioration des procédures.'],
+['SQL','don','Requêtes d’analyse et de vérification des données ; corrections uniquement selon les procédures autorisées.'],['Analyse de données','don','Repérage des incohérences entre sources.'],['Recherche de causes','don','Formulation d’hypothèses puis vérification.'],['Analyse des logs','don','Lecture des journaux pour dater et caractériser l’anomalie.'],['Investigation technique','don','Croisement des logs, des données et des flux.'],
+['ELK','obs','Exploration des logs pour retrouver les événements pertinents.'],['Analyse des flux API','obs','Suivi des requêtes, statuts HTTP et réponses.'],['Synchronisations inter-systèmes','obs','Vérification des échanges entre applications.'],['Diagnostic des échanges applicatifs','obs','Localiser où un échange échoue.'],
+['Communication technique','rel','Expliquer simplement un problème technique.'],['Reformulation des demandes','rel','Clarifier le besoin réel de l’utilisateur.'],['Accompagnement des utilisateurs','rel','Guider pas à pas, à distance si besoin.'],['Priorisation selon impact et urgence','rel','Ordonner les incidents selon leur criticité.'],
+['Zendesk','out','Outil de ticketing (cité dans mon CV).'],['Jira','out','Outil de ticketing (cité dans mon CV).'],['Windows et support à distance','out','Installation, configuration, dépannage, prise en main à distance.'],['IP / DNS / DHCP, VPN','out','Bases opérationnelles de diagnostic réseau.']];
+var fc=$('fc'),fa='all';
+Object.keys(CAT).forEach(function(k){var b=el('button','chip',CAT[k]);b.type='button';b.setAttribute('aria-pressed',k==='all');b.onclick=function(){fa=k;[].forEach.call(fc.children,function(c){c.setAttribute('aria-pressed',c===b)});rs()};fc.appendChild(b)});
+function rs(){var q=$('q').value.toLowerCase().trim(),ul=$('sk');ul.textContent='';var n=0;SK.forEach(function(s){if((fa==='all'||s[1]===fa)&&(s[0]+' '+s[2]).toLowerCase().indexOf(q)>-1){n++;var li=el('li'),b=el('button',null,s[0]);b.type='button';b.setAttribute('aria-expanded','false');b.onclick=function(){[].forEach.call(ul.querySelectorAll('button'),function(x){x.setAttribute('aria-expanded',x===b)});var d=$('sd');d.textContent='';d.appendChild(el('b',null,s[0]+' '));d.appendChild(el('span','tg','('+CAT[s[1]]+')'));d.appendChild(el('p',null,s[2]))};li.appendChild(b);ul.appendChild(li)}});if(!n){ul.appendChild(el('li',null,'Aucun résultat.'))}}
+$('q').oninput=rs;rs();
+
+/* Tableau de bord (décoratif) */
+var DB=[['🛠','Support applicatif','Prise en charge N1/N2, priorisation, suivi.','Tickets · SLA'],['🗄','Analyse SQL','Vérification et analyse de données.','SQL · jointures'],['📈','Logs et observabilité','Recherche d’événements et d’anomalies.','ELK · filtres'],['🔌','API et flux','Requêtes, statuts, synchronisations.','HTTP · JSON'],['🎫','Gestion des incidents','De la prise en charge à la clôture.','Priorité · escalade'],['🎧','Assistance technique','Accompagnement des utilisateurs.','Windows · réseau']];
+DB.forEach(function(d,i){var c=el('div','card');c.appendChild(el('div','ic',d[0]));c.appendChild(el('h3',null,d[1]));c.appendChild(el('p',null,d[2]));c.appendChild(el('div','tg',d[3]));var pts=[],x;for(var k=0;k<12;k++){x=14+((i*7+k*5)%17)+(k%3)*4;pts.push((k*10)+','+(34-x))}var s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('viewBox','0 0 110 34');s.setAttribute('class','sp');s.setAttribute('aria-hidden','true');var p=document.createElementNS('http://www.w3.org/2000/svg','polyline');p.setAttribute('points',pts.join(' '));p.setAttribute('fill','none');p.setAttribute('stroke','currentColor');p.setAttribute('stroke-width','2');s.style.color='var(--ac2)';s.appendChild(p);c.appendChild(s);c.appendChild(el('div','note','Courbe décorative, données de démonstration'));$('dash').appendChild(c)});
+
+/* Logs */
+var LG=[['INFO','sync-api','Démarrage du job de synchronisation #A-001'],['INFO','sync-api','Lecture de 250 enregistrements depuis la source'],['WARNING','sync-api','Temps de réponse élevé : 4,2 s'],['ERROR','gateway','HTTP 504 sur GET /api/v1/positions (timeout)'],['INFO','gateway','Nouvelle tentative 1/3'],['ERROR','gateway','HTTP 504 sur GET /api/v1/positions (timeout)'],['WARNING','db','Verrou détecté sur la table positions'],['INFO','db','Verrou libéré après 12 s'],['INFO','sync-api','Nouvelle tentative réussie, 250 enregistrements écrits'],['INFO','sync-api','Job #A-001 terminé']];
+var lv='ALL',lf=$('lf');
+['ALL','INFO','WARNING','ERROR'].forEach(function(k){var b=el('button','chip',k==='ALL'?'Tous':k);b.type='button';b.setAttribute('aria-pressed',k==='ALL');b.onclick=function(){lv=k;[].forEach.call(lf.children,function(c){c.setAttribute('aria-pressed',c===b)});rl()};lf.appendChild(b)});
+function rl(){var q=$('lq').value.trim(),g=$('lg');g.textContent='';LG.forEach(function(l,i){var t='['+l[0]+'] '+l[1]+' : '+l[2];if((lv==='ALL'||l[0]===lv)&&t.toLowerCase().indexOf(q.toLowerCase())>-1){var d=el('div'),a=el('span',l[0]),ix=q?t.toLowerCase().indexOf(q.toLowerCase()):-1;if(ix>-1){a.appendChild(document.createTextNode(t.slice(0,ix)));a.appendChild(el('mark',null,t.slice(ix,ix+q.length)));a.appendChild(document.createTextNode(t.slice(ix+q.length)))}else a.textContent=t;d.appendChild(el('span','t','09:1'+i+':0'+i+' '));d.appendChild(a);g.appendChild(d)}});if(!g.children.length)g.textContent='Aucun événement.'}
+$('lq').oninput=rl;rl();
+
+/* API */
+var AP=[['200 : succès','GET /api/v1/orders/1042',200,'{\n  "id": 1042,\n  "status": "shipped"\n}','Réponse normale : rien à corriger. Vérifier que la donnée correspond à la source.'],['401 : accès refusé','GET /api/v1/orders/1042',401,'{\n  "error": "unauthorized",\n  "message": "token expired"\n}','Jeton expiré : vérifier la validité du jeton, puis demander son renouvellement au bon service.'],['504 : délai dépassé','GET /api/v1/positions?device=D-1042',504,'{\n  "error": "gateway_timeout"\n}','Le service amont ne répond pas : consulter les logs, tester à nouveau, escalader avec l’heure et la requête.']];
+AP.forEach(function(a,i){var o=el('option',null,a[0]);o.value=i;$('as').appendChild(o)});
+function ra(){var a=AP[$('as').value],o=$('ao');o.textContent='';o.appendChild(el('div','INFO','Requête : '+a[1]));o.appendChild(el('div',a[2]<300?'SUCCESS':'ERROR','Statut : HTTP '+a[2]));o.appendChild(el('pre',null,a[3]));o.appendChild(el('div','WARNING','Diagnostic : '+a[4]));o.appendChild(el('div','t','Exemple fictif, aucune requête réelle.'))}
+$('as').onchange=ra;ra();
+
+/* Cas */
+var CS=[['Investigation d’un incident applicatif','Incident','Contexte (fictif) : des positions ne se mettent plus à jour.',[['Symptômes','Données figées depuis 30 minutes pour plusieurs appareils.'],['Méthode','Caractériser, puis examiner logs, flux et base.'],['Vérifications','Statut du service, erreurs HTTP, dernière réception en base.'],['Cause','Hypothèse : file de synchronisation bloquée.'],['Solution ou escalade','Escalade avec heure, requête et extrait de logs.'],['Résultat','Cas fictif : service rétabli, procédure mise à jour.']],''],
+['Analyse SQL','SQL','Objectif : trouver les appareils sans donnée récente.',[['Structure','Jointure gauche entre appareils et positions, regroupement par appareil.'],['Données','Tables fictives devices et positions.'],['Résultat attendu','Liste des appareils silencieux depuis plus de 30 minutes.'],['Explication','HAVING filtre après le regroupement sur la dernière réception.']],'SELECT d.device_id, MAX(p.received_at) AS last_seen\nFROM devices d\nLEFT JOIN positions p ON p.device_id = d.device_id\nGROUP BY d.device_id\nHAVING MAX(p.received_at) < NOW() - INTERVAL 30 MINUTE;'],
+['Analyse des logs avec ELK','ELK','Problème : erreurs intermittentes sur un service de synchronisation.',[['Recherche','Filtrer par service, niveau et mot-clé.'],['Filtrage','Resserrer sur la plage horaire de l’incident.'],['Anomalie fictive','Pic d’erreurs timeout toutes les 5 minutes.'],['Conclusion','Corrélation avec un job planifié : à transmettre à l’équipe concernée.']],'service:"sync-api" and log.level:"error" and message:*timeout*'],
+['Diagnostic d’un flux API','API','Flux : l’application A interroge l’application B.',[['Requête simulée','GET /api/v1/positions?device=D-1042'],['Réponse simulée','HTTP 504, corps JSON avec gateway_timeout.'],['Vérifications','Disponibilité de B, délai, charge, logs de la passerelle.'],['Résolution','Retester, puis escalader avec les éléments relevés.']],'GET /api/v1/positions?device=D-1042\n→ 504 {"error":"gateway_timeout"}'],
+['Synchronisation entre applications','Sync','Architecture fictive : deux applications échangent des commandes.',[['Problème','Des commandes existent dans A mais pas dans B.'],['Échanges','Vérifier les envois, accusés et rejets.'],['Journaux','Chercher les erreurs de format ou de délai.'],['Proposition','Identifier les écarts, corriger la cause, rejouer selon la procédure.']],'SELECT a.ref\nFROM app_a.orders a\nLEFT JOIN app_b.orders b ON b.ref = a.ref\nWHERE b.ref IS NULL;']];
+var dg=$('dg');
+CS.forEach(function(c){var d=el('div','card');d.appendChild(el('div','tg',c[1]));d.appendChild(el('h3',null,c[0]));d.appendChild(el('p',null,c[2]));var b=el('button','btn','Voir le cas pratique');b.type='button';b.onclick=function(){var x=$('dc');x.textContent='';var h=el('h3',null,c[0]);h.id='dt';x.appendChild(h);x.appendChild(el('p','note','Démonstration pédagogique, données fictives. '+c[2]));var dl=el('dl');c[3].forEach(function(r){dl.appendChild(el('dt',null,r[0]));dl.appendChild(el('dd',null,r[1]))});x.appendChild(dl);if(c[4]){x.appendChild(el('pre','cd',c[4]));var cb=el('button','btn','Copier l’extrait');cb.type='button';cb.onclick=function(){copy(c[4])};x.appendChild(cb)}if(dg.showModal)dg.showModal();else dg.setAttribute('open','')};d.appendChild(b);$('cg').appendChild(d)});
+$('dx').onclick=function(){dg.close()};dg.addEventListener('click',function(e){if(e.target===dg)dg.close()});
+
+/* Méthode */
+var MS=[['Comprendre le problème signalé','Ce qui ne marche pas, depuis quand, pour qui.'],['Recueillir les informations','Captures, heure, identifiants utiles.'],['Caractériser le dysfonctionnement','Le reproduire quand c’est possible.'],['Examiner logs et données','ELK, SQL, statuts HTTP.'],['Réaliser les vérifications','Tests ciblés, un à la fois.'],['Identifier une cause probable','Ou formuler une hypothèse claire.'],['Solution autorisée ou escalade','Selon la procédure et le périmètre.'],['Vérifier et documenter','Confirmer le résultat, tracer dans le ticket.']];
+var st=$('st');MS.forEach(function(m,i){var li=el('li'),n=el('div','n',i+1),w=el('div');w.appendChild(el('b',null,m[0]));w.appendChild(el('span',null,m[1]));li.appendChild(n);li.appendChild(w);st.appendChild(li)});
+var mk;$('mp').onclick=function(){clearInterval(mk);var i=0,L=st.children;[].forEach.call(L,function(x){x.classList.remove('on')});function nx(){[].forEach.call(L,function(x){x.classList.remove('on')});if(i>=L.length){clearInterval(mk);return}L[i++].classList.add('on')}nx();mk=setInterval(nx,RM?200:1100)};
+
+/* CV */
+var cb=$('cvb'),F='CV_Alfredo_Razafiarimanana.pdf';
+function noCv(){cb.appendChild(el('p','note','Le CV n’est pas encore en ligne : placez le fichier ' +F+' dans le même dossier que index.html. Les boutons apparaîtront automatiquement.'))}
+try{fetch(F,{method:'HEAD'}).then(function(r){if(!r.ok)throw 0;var a=el('a','btn m','Télécharger le CV (PDF)');a.href=F;a.download=F;var b=el('a','btn','Ouvrir dans un nouvel onglet');b.href=F;b.target='_blank';b.rel='noopener';var w=el('div','cta');w.appendChild(a);w.appendChild(b);cb.appendChild(w);var f=el('iframe');f.src=F;f.title='Aperçu du CV';f.style.cssText='width:100%;height:520px;border:1px solid var(--ln);border-radius:10px;margin-top:14px';cb.appendChild(f)}).catch(noCv)}catch(e){noCv()}
+
+$('cp').onclick=function(){copy('alfredorazafiarimanana@gmail.com')};
+})();
+</script>
+</body>
+</html>
